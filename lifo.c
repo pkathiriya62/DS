@@ -1,49 +1,57 @@
 #include <stdio.h>
 #define n 5
-int a[n], top = -1;
-int insertEnd(int val)
-{
-    if (top >= n - 1)
-        printf("Array is full......\n");
-    else
-    {
-        top++;
-        a[top] = val;
-    }
-}
+int a[n];
+int top = -1, i;
 int display()
 {
-    if (top < 0)
-        printf("Array is empty...\n");
-    else
+  if (top < 0)
+  {
+    printf("Array is empty .....");
+  }
+  else
+  {
+    for (i = 0; i <= top; i++)
     {
-        for (int i = 0; i <= top; i++)
-            printf("%d", a[i]);
+      printf("  %d", a[i]);
     }
+  }
+}
+
+int insertEnd(int val)
+{
+  if (top >= n - 1)
+  {
+    printf("\n Array is full :");
+  }
+  else
+  {
+    top++;
+    a[top] = val;
+  }
 }
 int delete()
 {
-    if (top < 0)
-        printf("array is empty......\n");
-    else
-    {
-        top--;
-    }
+  int x;
+  if (top < 0)
+  {
+    printf("Array is already empty :");
+  }
+  else
+  {
+    x = a[top];
+    top--;
+    return x;
+  }
 }
+
 int main()
 {
-    insertEnd(10);
-    insertEnd(20);
-    insertEnd(30);
-    insertEnd(40);
-    insertEnd(50);
-    insertEnd(60);
-    // insertEnd(70);
-    delete ();
-    delete ();
-    delete ();
-    display();
-   
-
-
+  insertEnd(100);
+  insertEnd(200);
+  insertEnd(300);
+  insertEnd(400);
+  insertEnd(500);
+  display();
+  delete ();
+  display();
 }

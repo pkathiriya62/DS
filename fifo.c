@@ -1,86 +1,49 @@
 #include <stdio.h>
 #define n 5
-
-int arr[n];
-int top = -1;
-
-int insertend(int val)
+int a[n], top = -1;
+int insertEnd(int val)
 {
-    if (top >= (n - 1))
-        printf("Array is full...\n");
-
+    if (top >= n - 1)
+        printf("Array is full......\n");
     else
     {
         top++;
-        arr[top] = val;
-    }
-}
-int firstinsert(int val)
-{
-    top++;
-
-    // printf("%d\n",top);
-    for (int i = 0; i <= top; i++)
-    {
-
-        arr[top - i] = arr[top - i - 1];
-    }
-
-    arr[0] = val;
-}
-
-int deletend()
-{
-    if (top < 0)
-        printf("Arrray is Empty..\n");
-
-    else
-    {
-        top--;
-    }
-}
-int firstdel()
-{
-    if (top < 0)
-        printf("Array is empty ");
-
-    else
-    {
-        top--;
-        for (int i = 0; i <= top; i++)
-        {
-            arr[i] = arr[i + 1];
-        }
+        a[top] = val;
     }
 }
 int display()
 {
     if (top < 0)
-    {
-        printf("Array is Empty..\n");
-    }
+        printf("Array is empty...\n");
     else
     {
         for (int i = 0; i <= top; i++)
-        {
-            printf("%d ", arr[i]);
-        }
+            printf("%d", a[i]);
     }
 }
-
+int delete()
+{
+    if (top < 0)
+        printf("array is empty......\n");
+    else
+    {
+        top--;
+    }
+}
 int main()
 {
-     
-    insertend(40);
-    insertend(50);
-    deletend();
-    deletend();
-    insertend(60);
-    firstinsert(10);
-    firstinsert(2);
-    insertend(5);
-    firstdel();
-    firstinsert(555);
-
+    insertEnd(10);
+    insertEnd(20);
+    insertEnd(30);
+    insertEnd(40);
+    insertEnd(50);
+    insertEnd(60);
+    // insertEnd(70);
+    delete ();
+    delete ();
+    delete ();
     display();
+   
+
+
 }
