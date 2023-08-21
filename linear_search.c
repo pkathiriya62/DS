@@ -7,11 +7,10 @@ int linearSearch(int a [], int x)
     {
         if(a[i]==x)
         {
-        return i+1;
+            return i+1;
         }
-    }
-     return -1;
-    
+    } 
+   return -1;   
 }
 int main()
 {
