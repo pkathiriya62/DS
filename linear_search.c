@@ -29,7 +29,7 @@ int main()
     int m= linearSearch(a,ele);
     if(m==-1)
     {
-        printf("element is not found :");
+        printf("element is not found.");
 
     }
     else
