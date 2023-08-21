@@ -59,11 +59,46 @@ int delete() {
 }
 
 int main() {
-  firstInsert(100);
-  firstInsert(200);
-  firstInsert(300);
-  display();
-  firstDelete ();
-  firstDelete ();
-  display();
+  int choice, value;
+    printf("\n1. Display");
+        printf("\n2. Insert first");
+        printf("\n3. first delete ");
+        printf("\n4. Insert end");
+        printf("\n5. Delete end");
+        printf("\n6. Exit");
+
+    do {
+        
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                display();
+                break;
+            case 2:
+                printf("Enter value to insert: ");
+                scanf("%d", &value);
+                firstInsert(value);
+                break;
+            case 3:
+                firstDelete();
+                break;
+            case 4:
+                printf("Enter value to insert: ");
+                scanf("%d", &value);
+                insertEnd(value);
+                break;
+            case 5:
+                delete();
+                break;
+            case 6:
+                printf("Exiting...");
+                break;
+            default:
+                printf("Invalid choice. Please enter a valid option.");
+        }
+    } while (choice != 6);
+
+    return 0;
 }
