@@ -12,6 +12,7 @@ int display() {
             printf("  %d", a[i]);
         }
     }
+    printf("\n");
 }
 
 int firstInsert(int value) {
@@ -27,16 +28,13 @@ int firstInsert(int value) {
 }
 
 int firstDelete() {
-    int x;
     if (top < 0) {
         printf("\n Array is already empty :");
     } else {
-        x = a[0];
         for (int i = 0; i < top; i++) {
             a[i] = a[i + 1];
         }
         top--;
-        return x;
     }
 }
 
@@ -64,6 +62,8 @@ int main() {
   firstInsert(100);
   firstInsert(200);
   firstInsert(300);
-  delete ();
+  display();
+  firstDelete ();
+  firstDelete ();
   display();
 }
