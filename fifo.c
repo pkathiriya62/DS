@@ -60,7 +60,7 @@ int delete() {
 
 int main() {
   int choice, value;
-    printf("\n1. Display");
+        printf("\n1. Display");
         printf("\n2. Insert first");
         printf("\n3. first delete ");
         printf("\n4. Insert end");
