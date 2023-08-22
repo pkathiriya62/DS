@@ -3,7 +3,8 @@ int binarySearch(int array[], int x) {
     int l = 0;
     int h = 9;
 
-    while (l <= h) {
+    while (l <= h) 
+    {
         int mid = (l+h) / 2;
 
         if (array[mid] == x) {
