@@ -8,7 +8,7 @@ int f = -1, r = -1;
 
 void insert(int value)
 {
-    if (r >= n - 1)
+    if (r > n)
     {
         printf("Queue is full\n");
     }
