@@ -1,184 +1,140 @@
-// double ended queue program
 #include <stdio.h>
 #define n 5
+int arr[n];
+int f = -1, r = -1;
 
-int a[n];
-int r = -1, f = -1, i;
-
-int insertf(int val)
+int insert(int val)
 {
-    if ((f == 0 && r == n - 1) || (f == r + 1))
+    if (r < 0)
     {
-        printf("queue is full.\n");
+        f = r = 0;
+        arr[r] = val;
+    }
+    else if (r >= n - 1)
+    {
+        printf("Queue is Full...\n");
     }
     else
     {
-        if (f == -1)
-        {
-            f = r = 0;
-        }
-        else if (f == 0)
-        {
-            f = n - 1;
-        }
-        else
-        {
-            f--;
-        }
-        a[f] = val;
+        r++;
+
+        arr[r] = val;
     }
 }
-
-int insertr(int val)
+int delete()
 {
-    if ((f == 0 && r == n - 1) || (f == r + 1))
+    if (f < 0)
     {
-        printf("queue is full.\n");
+        printf("Queue is Empty...");
+    }
+    else if (f == r)
+    {
+        f = r = -1;
     }
     else
     {
-        if (f == -1)
-        {
-            f = r = 0;
-        }
-        else if (r == n - 1)
-        {
-            r = 0;
-        }
-        else
-        {
-            r++;
-        }
-        a[r] = val;
+        f++;
     }
 }
-
-int deletef()
+int fisrtinsert(int val)
 {
-    if (f == -1)
+    if (r < 0)
     {
-        printf("queue is empty.\n");
+        r = f = 0;
+        arr[r] = val;
     }
+
+    else if (f == 0)
+
+    {
+        printf("Position is filled..\n");
+    }
+
     else
     {
-        if (f == r)
-        {
-            f = r = -1;
-        }
-        else
-        {
-            if (f == n - 1)
-            {
-                f = 0;
-            }
-            else
-            {
-                f++;
-            }
-        }
+        f--;
+        arr[f] = val;
     }
 }
-
-int deleter()
+int lastdel()
 {
-    if (f == -1)
+    if (f < 0)
     {
-        printf("queue is empty.\n");
+        printf("Queue is Empty..\n");
+    }
+    else if (r == f)
+    {
+
+        r = f = -1;
     }
     else
     {
-        if (f == r)
-        {
-            f = r = -1;
-        }
-        else
-        {
-            if (r == 0)
-            {
-                r = n - 1;
-            }
-            else
-            {
-                r--;
-            }
-        }
+        r--;
     }
 }
 
 int display()
 {
-    if (f == -1)
+    if (f < 0)
     {
-        printf("queue is empty.\n");
+        printf("Queue is Empty...\n");
     }
     else
     {
-        i = f;
-        while (1)
+        for (int i = f; i <= r; i++)
         {
-            printf("%d ", a[i]);
-            if (i == r)
-            {
-                break;
-            }
-            if (i == n - 1)
-            {
-                i = 0;
-            }
-            else
-            {
-                i++;
-            }
+            printf("%d ", arr[i]);
         }
-        printf("\n");
     }
 }
-
 int main()
 {
-    int choice, val;
+
+    int ch, val;
 
     do
     {
-        printf("queue Operations:\n");
-        printf("1. Insert at f\n");
-        printf("2. Insert at r\n");
-        printf("3. Delete from f\n");
-        printf("4. Delete from r\n");
-        printf("5. Display\n");
-        printf("6. Exit\n");
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
 
-        switch (choice)
+        printf("1.Insert In Next Position \n");
+        printf("2.Insert in First Position\n");
+        printf("3.Delete From Last Position\n");
+        printf("4.Delete From First Position\n");
+        printf("5.Display Queue \n");
+        printf("\n");
+
+        printf("Enter Your Choice...\n");
+        scanf("%d", &ch);
+
+        switch (ch)
         {
         case 1:
-            printf("Enter the value to insert at the f: ");
+            printf("Enter Value :");
             scanf("%d", &val);
-            insertf(val);
+            insert(val);
             break;
+
         case 2:
-            printf("Enter the value to insert at the r: ");
+            printf("Enter Value :");
             scanf("%d", &val);
-            insertr(val);
+            fisrtinsert(val);
             break;
+
         case 3:
-            deletef();
+            lastdel();
+
             break;
+
         case 4:
-            deleter();
+            delete ();
             break;
+
         case 5:
             display();
             break;
-        case 6:
-            printf("Exiting the program.\n");
-            break;
+
         default:
-            printf("Invalid choice. Please try again.\n");
+            printf("Wrong input . Enter Input  Again..\n");
+            break;
         }
-
-    } while (choice != 6);
-
-    return 0;
+    } while (ch != 5);
 }
