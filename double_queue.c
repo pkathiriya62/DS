@@ -136,8 +136,8 @@ int main()
                 break;
 
             case 6:
-                printf("Exiting the program.\n");
-                exit(0);
+                printf("Exiting the program.you can leave now.\n");
+                break;
 
             default:
                 printf("Invalid choice. Please enter a valid option.\n");
