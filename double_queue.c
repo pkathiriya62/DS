@@ -54,7 +54,7 @@ void insertfirst(int value)
     }
     else
     {
-        printf("Queue is not initialized yet.\n");
+        printf("Queue is not initialized.\n");
     }
 }
 
