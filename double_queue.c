@@ -12,7 +12,7 @@ int insert(int val)
     }
     else if (r >= n - 1)
     {
-        printf("Queue is Full...\n");
+        printf("Queue is Full.\n");
     }
     else
     {
@@ -25,7 +25,7 @@ int delete()
 {
     if (f < 0)
     {
-        printf("Queue is Empty...");
+        printf("Queue is Empty.");
     }
     else if (f == r)
     {
@@ -47,7 +47,7 @@ int fisrtinsert(int val)
     else if (f == 0)
 
     {
-        printf("Position is filled..\n");
+        printf("sorry but try next time.\n");
     }
 
     else
@@ -60,7 +60,7 @@ int lastdel()
 {
     if (f < 0)
     {
-        printf("Queue is Empty..\n");
+        printf("Queue is Empty.\n");
     }
     else if (r == f)
     {
@@ -77,7 +77,7 @@ int display()
 {
     if (f < 0)
     {
-        printf("Queue is Empty...\n");
+        printf("Queue is Empty.\n");
     }
     else
     {
@@ -133,7 +133,7 @@ int main()
             break;
 
         default:
-            printf("Wrong input . Enter Input  Again..\n");
+            printf("Wrong choice,selct again.\n");
             break;
         }
     } while (ch != 5);
