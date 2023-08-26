@@ -3,7 +3,7 @@
 
 #define n 5
 
-int queue[n];
+int a[n];
 int f = -1, r = -1;
 
 void insert(int value)
@@ -19,7 +19,7 @@ void insert(int value)
             f = 0;
         }
         r++;
-        queue[r] = value;
+        a[r] = value;
         printf("%d inserted into the queue.\n", value);
     }
 }
@@ -31,7 +31,7 @@ void delete()
     }
     else
     {
-        printf("%d deleted from the queue.\n", queue[f]);
+        printf("%d deleted from the queue.\n", a[f]);
         f++;
         if (f > r)
         {
@@ -49,7 +49,7 @@ void insertfirst(int value)
     else if (f > 0)
     {
         f--;
-        queue[f] = value;
+        a[f] = value;
         printf("%d inserted at the beginning of the queue.\n", value);
     }
     else
@@ -66,7 +66,7 @@ void deletelast()
     }
     else
     {
-        printf("%d deleted  end of the queue.\n", queue[r]);
+        printf("%d deleted  end of the queue.\n", a[r]);
         r--;
         if (r < f)
         {
@@ -88,7 +88,7 @@ void display()
         printf("Queue elements: ");
         for (int i = f; i <= r; i++)
         {
-            printf("%d ", queue[i]);
+            printf("%d ", a[i]);
         }
         printf("\n");
     }
