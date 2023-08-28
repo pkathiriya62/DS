@@ -4,52 +4,52 @@
 #define n 5
 
 int queue[n];
-int front = -1, rear = -1;
+int f = -1, r = -1;
 
 void insert(int value)
 {
-    if (rear >= n - 1)
+    if (r >= n - 1)
     {
         printf("Queue is full\n");
     }
     else
     {
-        if (front < 0)
+        if (f < 0)
         {
-            front = 0;
+            f = 0;
         }
-        rear++;
-        queue[rear] = value;
+        r++;
+        queue[r] = value;
         printf("%d inserted into the queue.\n", value);
     }
 }
 void delete()
 {
-    if (front < 0)
+    if (f < 0)
     {
         printf("Queue is empty...\n");
     }
     else
     {
-        printf("%d deleted from the queue.\n", queue[front]);
-        front++;
-        if (front > rear)
+        printf("%d deleted from the queue.\n", queue[f]);
+        f++;
+        if (f > r)
         {
-            front = rear = -1;
+            f = r = -1;
         }
     }
 }
 
 void insertfirst(int value)
 {
-    if (front == 0)
+    if (f == 0)
     {
         printf("Can't insert at the beginning \n");
     }
-    else if (front > 0)
+    else if (f > 0)
     {
-        front--;
-        queue[front] = value;
+        f--;
+        queue[f] = value;
         printf("%d inserted at the beginning of the queue.\n", value);
     }
     else
@@ -60,17 +60,17 @@ void insertfirst(int value)
 
 void deletelast()
 {
-    if (front < 0)
+    if (f < 0)
     {
         printf("Queue is empty...\n");
     }
     else
     {
-        printf("%d deleted  end of the queue.\n", queue[rear]);
-        rear--;
-        if (rear < front)
+        printf("%d deleted  end of the queue.\n", queue[r]);
+        r--;
+        if (r < f)
         {
-            front = rear = -1;
+            f = r = -1;
         }
     }
 }
@@ -79,14 +79,14 @@ void deletelast()
 
 void display()
 {
-    if (front < 0)
+    if (f < 0)
     {
         printf("\nQueue is empty.\n");
     }
     else
     {
         printf("Queue elements: ");
-        for (int i = front; i <= rear; i++)
+        for (int i = f; i <= r; i++)
         {
             printf("%d ", queue[i]);
         }
