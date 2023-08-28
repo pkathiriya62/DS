@@ -4,7 +4,7 @@
 #define n 5
 
 int queue[n];
-int f = -1, r = -1;
+int f = -1, r = -1; 
 
 void insert(int value)
 {
