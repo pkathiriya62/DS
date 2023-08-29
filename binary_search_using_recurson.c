@@ -34,7 +34,7 @@ int main() {
     int p = binarySearch(arr, 0, n - 1, x);
 
     if (p != -1) {
-        printf("Element found at index %d\n", p+1);
+        printf("Element found at position: %d\n", p+1);
     } else {
         printf("Element not found\n");
     }
