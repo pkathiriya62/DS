@@ -9,6 +9,53 @@ struct node
 
 struct node *head = NULL;
 
+void InsertEnd(int val)
+{
+    struct node *ptr = head;
+    struct node *temp = malloc(sizeof(struct node));
+    temp->data = val;
+    temp->next = NULL;
+
+    if (head == NULL)
+    {
+        head = temp;
+        return;
+    }
+    while (ptr->next != NULL)
+    {
+        ptr = ptr->next;
+    }
+    ptr->next = temp;
+    return;
+}
+
+void DeleteEnd()
+{
+    struct node *ptr = head;
+    struct node *p;
+
+    if (head == NULL)
+    {
+        printf("List Is Already Empty...\n");
+    }
+    else if (head->next == NULL)
+    {
+        head == NULL;
+        printf("List is Empty...\n");
+        free(ptr);
+        return;
+    }
+
+    while (ptr->next != NULL)
+    {
+        p = ptr;
+        ptr = ptr->next;
+    }
+    p->next = NULL;
+    free(ptr);
+    return;
+}
+
 void display()
 {
     struct node *ptr=head;
