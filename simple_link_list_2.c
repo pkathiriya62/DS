@@ -167,7 +167,7 @@ int main()
         
         case 7:
 
-            printf("exit thos program ....");
+            printf("exit this program ....");
             exit(0);
 
         default:
