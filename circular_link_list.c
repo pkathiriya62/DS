@@ -3,175 +3,209 @@
 
 struct node
 {
+
     int data;
     struct node *next;
 };
 
 struct node *head = NULL;
-void insertend(int val)
+
+void inseretEnd(int val)
 {
     struct node *ptr = head;
     struct node *temp = malloc(sizeof(struct node));
-
     temp->data = val;
     temp->next = NULL;
+
     if (head == NULL)
     {
         head = temp;
+        temp->next = head;
+
         return;
     }
-    while (ptr->next != NULL)
+    while (ptr->next != head)
     {
         ptr = ptr->next;
     }
     ptr->next = temp;
+    temp->next = head;
     return;
 }
-void insert_first(int val)
-{
-    struct node *temp = malloc(sizeof(struct node));
 
+void MidInsert(int val, int position)
+{
+    struct node *ptr = head;
+    struct node *temp = malloc(sizeof(struct node));
     temp->data = val;
+    temp->next = NULL;
+
+    while (ptr->data != position)
+    {
+        ptr = ptr->next;
+    }
+    temp->next = ptr->next;
+    ptr->next = temp;
+}
+void Firstinsert(int val)
+{
+    struct node *ptr = head;
+    struct node *temp = malloc(sizeof(struct node));
+    temp->data = val;
+    temp->next = NULL;
+
+    if (head == NULL)
+    {
+        head = temp;
+        temp->next = head;
+        return;
+    }
+
+    while (ptr->next != head)
+    {
+        ptr = ptr->next;
+    }
+    ptr->next = temp;
     temp->next = head;
     head = temp;
+    return;
 }
-void deleteend()
+void MidDelete(int position)
 {
     struct node *ptr = head;
     struct node *p;
-    if (ptr->next == NULL)
-    {
-        head = NULL;
-        free(ptr);
-    }
-    while (ptr != NULL)
+
+    while (ptr->data != position)
     {
         p = ptr;
         ptr = ptr->next;
     }
-    p->next = NULL;
+    p->next = ptr->next;
+    free(ptr);
+}
+
+void DeleteEnd()
+{
+    struct node *ptr = head;
+    struct node *p;
+
+    if (head == NULL)
+    {
+
+        printf("List Is Empty..\n");
+
+        return;
+    }
+    while (ptr->next != head)
+    {
+        p = ptr;
+        ptr = ptr->next;
+    }
+
+    p->next = head;
     free(ptr);
     return;
 }
-void delete_first()
-{
-    if (head == NULL)
-    {
-        printf("List is empty.\n");
-        return;
-    }
-
-    struct node *temp = head;
-    head = head->next;
-    free(temp);
-}
-void display()
+void FirstDelete()
 {
     struct node *ptr = head;
+    struct node *p;
+
     if (head == NULL)
     {
-        printf("list is empty ....");
+        head = NULL;
+        printf("List Is Empty..\n");
+        return;
+    }
+    head = ptr->next;
+    while (ptr->next != head)
+    {
+        p = ptr;
+        ptr = ptr->next;
+    }
+    p->next = head;
+    free(ptr);
+    return;
+}
+int Display()
+{
+    struct node *ptr = head;
+
+    if (head == NULL)
+    {
+        printf("List Is  Empty..");
     }
     else
     {
-        while (ptr != NULL)
+        while (ptr->next != head)
         {
             printf("%d ", ptr->data);
             ptr = ptr->next;
         }
+        printf("%d ", ptr->data);
     }
     printf("\n");
-}
-void mid_insert(int val ,int position)
-{
-    struct node *temp= malloc(sizeof(struct node ));
-    temp->data=val;
-    temp->next=NULL;
-
-
-    if(position==1)
-    {
-        temp->next=head;
-        head=temp;
-        return;
-    }
-    struct node *ptr =head;
-    int i=1;
-    
-   while(ptr !=NULL && i<position-1)
-   {
-        ptr =ptr->next;
-        i++;
-   }
-
-   if(ptr==NULL)
-
-   {
-        printf("not possible ...");
-   }
-
-   temp->next=ptr->next;
-   ptr->next=temp;
 }
 
 int main()
 {
-    int choice, val,position;
-    printf("\n1. Insert ");
-    printf("\n2. display ");
-    printf("\n3. Delete end");
-    printf("\n4. Insert first");
-    printf("\n5. delete first");
-    printf("\n6. mid insert  ....");
-    printf("\n7. Exit");
-
-    while (1)
+    int ch, val, position;
+    do
     {
-        printf("\nEnter your choice");
-        scanf("%d", &choice);
-        switch (choice)
-        {
+        printf("1.insertEnd\n");
+        printf("2.First Insert\n");
+        printf("3.Mid insert\n");
+        printf("4.DeleteEnd\n");
+        printf("5.Delete First\n");
+        printf("6.Mid Delete\n");
+        printf("7.Display\n");
+        printf("press 0 for Stop the Loop\n");
 
+        printf("\n");
+
+        printf("Enter Your Choice : ");
+        scanf("%d", &ch);
+
+        switch (ch)
+        {
         case 1:
-            printf("Enter your value");
+            printf("Enter Your Value : ");
             scanf("%d", &val);
-            insertend(val);
+            inseretEnd(val);
             break;
 
         case 2:
-            display();
+            printf("Enter Your Value : ");
+            scanf("%d", &val);
+            Firstinsert(val);
             break;
 
         case 3:
-            deleteend();
+            printf("Enter Your Value & Position : ");
+            scanf("%d%d", &val, &position);
+            MidInsert(val, position);
             break;
 
         case 4:
-            printf("enter your value :");
-            scanf("%d", &val);
-            insert_first(val);
+            DeleteEnd();
             break;
 
         case 5:
-            delete_first();
+            FirstDelete();
             break;
 
         case 6:
-            printf("enter your value :");
-            scanf("%d",&val);
-            printf("enter your position :");
-            scanf("%d",&position);
-
-            mid_insert(val,position);
+            printf("Enter position to Delete : ");
+            scanf("%d", &position);
+            MidDelete(position);
             break;
-        
-        case 7:
 
-            printf("exit this program ....");
-            exit(0);
+        case 7:
+            Display();
+            break;
 
         default:
-            printf("invalid option sorry .....");
+            printf("Wrong Choice..Pls Enter current Choice");
         }
-    }
+    } while (ch != 0);
 }
